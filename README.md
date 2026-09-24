@@ -20,7 +20,7 @@ render.yaml       → configuración para Render
 
 ## 1. Completar los datos
 
-Abre `js/config.js` y reemplaza todo lo que está entre corchetes: WhatsApp (formato `51987654321`), correo, Instagram, dirección, razón social y RUC.
+Los datos de contacto (WhatsApp, correo, Instagram, dirección, horario, textos y tipos de proyecto) se editan en Pages CMS, sección **Contacto** (`content/contacto.json`). `js/config.js` guarda una copia de respaldo de WhatsApp, correo, Instagram y dirección, que solo se usa si ese archivo no carga, además de la razón social y el RUC (si están vacíos no se muestran).
 
 Los textos que dicen `[X]` o `[...]` están en `js/i18n.js` (plazos, rangos de presupuesto). La biografía se edita en Pages CMS (sección **Estudio**).
 
@@ -30,6 +30,7 @@ Milagros edita sus proyectos y su perfil desde [Pages CMS](https://app.pagescms.
 
 - **Proyectos** → `content/proyectos.json`. Se pueden crear, editar, reordenar y borrar proyectos; cada uno con varias fotos y planos (se guardan en `img/proyectos/`). El orden de la lista es el orden en la web y la primera foto es la portada.
 - **Estudio** → `content/estudio.json`. Retrato (se guarda en `img/estudio/`), biografía, cargo, pie de foto y formación. Si el retrato está vacío se muestra la silueta; si el archivo no carga, la web usa los textos de `js/i18n.js`.
+- **Contacto** → `content/contacto.json`. Título y subtítulo, WhatsApp, correo, Instagram, dirección y horario (se ocultan si están vacíos) y los tipos de proyecto del formulario. Si el archivo no carga, la web usa `js/config.js` y `js/i18n.js`.
 
 Otros detalles:
 
@@ -76,6 +77,11 @@ No hace falta achicar las fotos antes: el sistema las optimiza solo. Evita subir
 **Editar tu descripción**
 1. Entra a **Estudio**.
 2. Cambia **Biografía (español)** y **Biografía (inglés)**. Ahí mismo puedes cambiar tu cargo, el pie de foto y tu formación.
+3. Pulsa **Save**.
+
+**Cambiar tus datos de contacto**
+1. Entra a **Contacto**.
+2. Cambia lo que necesites: WhatsApp (51 + número, sin espacios ni +), correo, Instagram (sin @), dirección, horario, los textos de arriba del formulario o los tipos de proyecto. Si dejas vacíos la dirección o el horario, no se muestran.
 3. Pulsa **Save**.
 
 **Imagen para compartir en WhatsApp/redes:** `img/og.jpg` (1200 × 630 px). Las etiquetas `og:url`, `og:image` y `twitter:image` de `index.html` usan la URL absoluta de Render; cámbialas cuando conectes el dominio definitivo (hay un comentario ahí).

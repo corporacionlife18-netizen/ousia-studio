@@ -3,11 +3,12 @@
    Todo lo que hay que cambiar está AQUÍ.
    ========================================================= */
 window.OUSIA_CONFIG = {
-  // Contacto (WhatsApp sin "+", sin espacios: 51 + número)
-  whatsapp: "51990650913",
+  // Contacto: RESPALDO. Los datos reales se editan en content/contacto.json (Pages CMS);
+  // estos solo se usan si ese archivo no carga. (WhatsApp sin "+", sin espacios: 51 + número)
+  whatsapp: "51990650813",
   email: "contacto@ousia-studio.pe",
-  instagram: "ousiastudio",
-  direccion: "[Dirección], [Ciudad], Perú",
+  instagram: "ousiastudio.arch",
+  direccion: "",
 
   // Datos legales (salen en el footer y en el Libro de Reclamaciones).
   // Si están vacíos no se muestran; en el libro el proveedor sale como "Ousia Studio".

@@ -41,13 +41,12 @@ window.OUSIA_I18N = {
     },
     contact: {
       kicker: "Contacto", title: "Conversemos sobre tu proyecto.",
-      sub: "Cuéntanos qué tienes en mente. Respondemos en [X] días hábiles con los siguientes pasos.",
-      whatsapp: "Escríbenos por WhatsApp", where: "Estudio",
-      name: "Nombre", email: "Correo", type: "Tipo de proyecto", budget: "Presupuesto aproximado", msg: "Cuéntanos un poco",
+      sub: "Cuéntanos qué tienes en mente. Respondemos en 2 días hábiles con los siguientes pasos.",
+      whatsapp: "Escríbenos por WhatsApp", where: "Estudio", hours: "Horario",
+      name: "Nombre", email: "Correo", type: "Tipo de proyecto", budget: "Presupuesto aproximado (S/)", budgetPh: "Ej. 80,000", noBudget: "No indicado", msg: "Cuéntanos un poco",
       send: "Enviar mensaje", sending: "Enviando…",
       thanks: "Gracias, recibimos tu mensaje.", thanksSub: "Te respondemos en breve.",
       types: ["Vivienda", "Interiores", "Remodelación", "Comercial"],
-      budgets: ["[Rango 1]", "[Rango 2]", "[Rango 3]", "Aún no sé"],
       errName: "Escribe tu nombre.", errEmail: "Escribe un correo válido, por ejemplo nombre@correo.com.",
       errSend: "No se pudo enviar. Escríbenos por WhatsApp o inténtalo de nuevo.",
       waMsg: "Hola Ousia Studio, quiero conversar sobre un proyecto."
@@ -100,13 +99,12 @@ window.OUSIA_I18N = {
     },
     contact: {
       kicker: "Contact", title: "Let's talk about your project.",
-      sub: "Tell us what you have in mind. We reply within [X] business days with next steps.",
-      whatsapp: "Message us on WhatsApp", where: "Studio",
-      name: "Name", email: "Email", type: "Project type", budget: "Approximate budget", msg: "Tell us a bit",
+      sub: "Tell us what you have in mind. We reply within 2 business days with next steps.",
+      whatsapp: "Message us on WhatsApp", where: "Studio", hours: "Hours",
+      name: "Name", email: "Email", type: "Project type", budget: "Approximate budget (S/)", budgetPh: "e.g. 80,000", noBudget: "Not specified", msg: "Tell us a bit",
       send: "Send message", sending: "Sending…",
       thanks: "Thanks, we got your message.", thanksSub: "We'll get back to you soon.",
       types: ["Home", "Interiors", "Renovation", "Commercial"],
-      budgets: ["[Range 1]", "[Range 2]", "[Range 3]", "Not sure yet"],
       errName: "Enter your name.", errEmail: "Enter a valid email, for example name@email.com.",
       errSend: "The message couldn't be sent. Message us on WhatsApp or try again.",
       waMsg: "Hi Ousia Studio, I'd like to talk about a project."

@@ -1,0 +1,18 @@
+{
+  "titulo_es": "Conversemos sobre tu proyecto.",
+  "titulo_en": "Let's talk about your project.",
+  "subtitulo_es": "Cuéntanos qué tienes en mente. Respondemos en 2 días hábiles con los siguientes pasos.",
+  "subtitulo_en": "Tell us what you have in mind. We reply within 2 business days with next steps.",
+  "whatsapp": "51990650813",
+  "email": "contacto@ousia-studio.pe",
+  "instagram": "ousiastudio.arch",
+  "direccion": "",
+  "horario_es": "",
+  "horario_en": "",
+  "tipos": [
+    { "es": "Vivienda", "en": "Home" },
+    { "es": "Interiores", "en": "Interiors" },
+    { "es": "Remodelación", "en": "Renovation" },
+    { "es": "Comercial", "en": "Commercial" }
+  ]
+}

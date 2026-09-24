@@ -108,3 +108,40 @@ content:
       - { name: pie_foto_es, label: Pie de foto (español), type: string }
       - { name: pie_foto_en, label: Pie de foto (inglés), type: string }
       - { name: formacion, label: Formación, type: string, description: "Universidad (no se traduce)" }
+
+  - name: contacto
+    label: Contacto
+    type: file
+    path: content/contacto.json
+    format: json
+    fields:
+      - { name: titulo_es, label: Título (español), type: string }
+      - { name: titulo_en, label: Título (inglés), type: string }
+      - { name: subtitulo_es, label: Subtítulo (español), type: text }
+      - { name: subtitulo_en, label: Subtítulo (inglés), type: text }
+      - name: whatsapp
+        label: WhatsApp
+        type: string
+        required: true
+        description: "Formato: 51 + número, sin espacios ni +. Ej: 51990650813"
+        pattern:
+          regex: "^51\\d{9}$"
+          message: "Debe ser 51 seguido de los 9 dígitos del celular, sin espacios ni +."
+      - { name: email, label: Correo, type: string, required: true }
+      - name: instagram
+        label: Instagram
+        type: string
+        description: "Solo el usuario, sin @. Ej: ousiastudio.arch"
+      - name: direccion
+        label: Dirección del estudio
+        type: string
+        description: Si la dejas vacía, no se muestra en la web.
+      - { name: horario_es, label: Horario (español), type: string, description: "Opcional. Ej. Lun–Vie, 9:00–18:00. Si está vacío no se muestra." }
+      - { name: horario_en, label: Horario (inglés), type: string, description: "Opcional. Ej. Mon–Fri, 9am–6pm" }
+      - name: tipos
+        label: Tipos de proyecto (formulario)
+        type: object
+        list: true
+        fields:
+          - { name: es, label: Español, type: string, required: true }
+          - { name: en, label: Inglés, type: string }

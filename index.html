@@ -218,8 +218,8 @@
   <div class="wrap contact__in">
     <div class="contact__info">
       <div class="sec-label"><span class="sec-num">(05)</span><span class="kicker" data-i18n="contact.kicker">Contacto</span></div>
-      <h2 class="h2 h2--lg" data-i18n="contact.title">Conversemos sobre tu proyecto.</h2>
-      <p class="lead lead--ink" data-i18n="contact.sub">Cuéntanos qué tienes en mente. Respondemos en [X] días hábiles con los siguientes pasos.</p>
+      <h2 class="h2 h2--lg" id="contactTitle" data-i18n="contact.title">Conversemos sobre tu proyecto.</h2>
+      <p class="lead lead--ink" id="contactSub" data-i18n="contact.sub">Cuéntanos qué tienes en mente. Respondemos en 2 días hábiles con los siguientes pasos.</p>
       <a class="btn btn--dark btn--wa" data-wa target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.4 18.7z"/></svg>
         <span data-i18n="contact.whatsapp">Escríbenos por WhatsApp</span>
@@ -227,7 +227,8 @@
       <dl class="contact__data">
         <div><dt>Email</dt><dd><a data-email></a></dd></div>
         <div><dt>Instagram</dt><dd><a data-ig target="_blank" rel="noopener"></a></dd></div>
-        <div class="span2"><dt data-i18n="contact.where">Estudio</dt><dd data-address></dd></div>
+        <div class="span2" data-if-ct="direccion"><dt data-i18n="contact.where">Estudio</dt><dd data-address></dd></div>
+        <div class="span2" data-if-ct="horario" hidden><dt data-i18n="contact.hours">Horario</dt><dd id="contactHours"></dd></div>
       </dl>
     </div>
 
@@ -238,7 +239,7 @@
           <div class="field"><label for="c-email" data-i18n="contact.email">Correo</label><input id="c-email" name="correo" type="email" autocomplete="email" required><span class="err" id="c-email-err"></span></div>
         </div>
         <fieldset class="field"><legend data-i18n="contact.type">Tipo de proyecto</legend><div class="chips" id="typeChips"></div></fieldset>
-        <fieldset class="field"><legend data-i18n="contact.budget">Presupuesto aproximado</legend><div class="chips" id="budgetChips"></div></fieldset>
+        <div class="field"><label for="c-budget" data-i18n="contact.budget">Presupuesto aproximado (S/)</label><input id="c-budget" name="presupuesto" type="text" inputmode="decimal" autocomplete="off" placeholder="Ej. 80,000" data-i18n-ph="contact.budgetPh"></div>
         <div class="field"><label for="c-msg" data-i18n="contact.msg">Cuéntanos un poco</label><textarea id="c-msg" name="mensaje" rows="3"></textarea></div>
         <p class="err" id="c-send-err" role="alert"></p>
         <button type="submit" class="btn btn--dark" id="contactBtn" data-i18n="contact.send">Enviar mensaje</button>
@@ -323,7 +324,7 @@
       <div class="lr__prov">
         <div><span>Proveedor</span><strong data-proveedor></strong></div>
         <div data-if="ruc"><span>RUC</span><strong data-ruc></strong></div>
-        <div><span>Domicilio</span><strong data-address></strong></div>
+        <div data-if-ct="direccion"><span>Domicilio</span><strong data-address></strong></div>
       </div>
 
       <fieldset class="lr__sec">

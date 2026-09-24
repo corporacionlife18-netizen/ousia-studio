@@ -15,7 +15,7 @@
     lang: (() => { try { return localStorage.getItem("ousia-lang") || "es"; } catch (e) { return "es"; } })(),
     filter: "all", view: "grid", hover: 0,
     slide: 0, open: -1, tab: "photos", photo: 0,
-    type: 0, budget: -1
+    type: 0
   };
   const t = (path) => path.split(".").reduce((o, k) => (o ? o[k] : undefined), I[state.lang]) ?? "";
   const L = (obj) => (obj && typeof obj === "object" ? obj[state.lang] ?? obj.es : obj);
@@ -43,13 +43,26 @@
     shape: p.shape || ["A", "C", "B"][i % 3], tone: p.tone || TONES[i % TONES.length]
   }));
 
+  /* ---------- Contacto (content/contacto.json; si no carga, config.js) ---------- */
+  let contact = null;
+  const CT = (k) => String((contact && k in contact ? contact[k] : C[k]) ?? "").trim();
+  const CTL = (k) => String((contact && contact[`${k}_${state.lang}`]) ?? "").trim();
+  // tolera que en el CMS escriban "+51 990 650 813" o "@usuario" / la URL completa
+  const waNumber = () => CT("whatsapp").replace(/\D/g, "");
+  const igUser = () => CT("instagram").replace(/^https?:\/\/(www\.)?instagram\.com\//i, "").replace(/^@/, "").replace(/\/+$/, "");
+  const waLink = (text) => `https://wa.me/${waNumber()}?text=${encodeURIComponent(text)}`;
+
   /* ---------- Datos fijos (contacto, legal) ---------- */
   function fillStatic() {
-    const waText = encodeURIComponent(t("contact.waMsg"));
-    $$("[data-wa]").forEach((a) => (a.href = `https://wa.me/${C.whatsapp}?text=${waText}`));
-    $$("[data-email]").forEach((a) => { a.href = `mailto:${C.email}`; a.textContent = C.email; });
-    $$("[data-ig]").forEach((a) => { a.href = `https://instagram.com/${C.instagram}`; if (!a.textContent.trim() || a.textContent.startsWith("@")) a.textContent = a.closest(".footer__links") ? "Instagram" : "@" + C.instagram; });
-    $$("[data-address]").forEach((el) => (el.textContent = C.direccion));
+    $$("[data-wa]").forEach((a) => (a.href = waLink(t("contact.waMsg"))));
+    $$("[data-email]").forEach((a) => { a.href = `mailto:${CT("email")}`; a.textContent = CT("email"); });
+    $$("[data-ig]").forEach((a) => { a.href = `https://instagram.com/${igUser()}`; if (!a.textContent.trim() || a.textContent.startsWith("@")) a.textContent = a.closest(".footer__links") ? "Instagram" : "@" + igUser(); });
+    $$("[data-address]").forEach((el) => (el.textContent = CT("direccion")));
+    if (CTL("titulo")) $("#contactTitle").textContent = CTL("titulo");
+    if (CTL("subtitulo")) $("#contactSub").textContent = CTL("subtitulo");
+    $("#contactHours").textContent = CTL("horario");
+    // filas opcionales: se ocultan si están vacías
+    $$("[data-if-ct]").forEach((el) => (el.hidden = !(el.dataset.ifCt === "horario" ? CTL("horario") : CT(el.dataset.ifCt))));
     $$("[data-razon]").forEach((el) => (el.textContent = C.razonSocial));
     $$("[data-ruc]").forEach((el) => (el.textContent = C.ruc));
     $$("[data-proveedor]").forEach((el) => (el.textContent = PROVEEDOR));
@@ -81,6 +94,7 @@
     document.documentElement.lang = state.lang;
     $$("[data-i18n]").forEach((el) => { const v = t(el.dataset.i18n); if (v) el.textContent = v; });
     $$("[data-i18n-aria]").forEach((el) => { const v = t(el.dataset.i18nAria); if (v) el.setAttribute("aria-label", v); });
+    $$("[data-i18n-ph]").forEach((el) => { const v = t(el.dataset.i18nPh); if (v) el.setAttribute("placeholder", v); });
     $$("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === state.lang)));
     fillStatic();
     renderStudio();
@@ -320,11 +334,11 @@
 
   /* ---------- Formulario de contacto ---------- */
   function renderChips() {
-    const types = t("contact.types"), budgets = t("contact.budgets");
+    // tipos de proyecto desde content/contacto.json; si no hay, los de i18n.js
+    const cms = contact && Array.isArray(contact.tipos) ? contact.tipos.map((x) => String((x && (x[state.lang] || x.es)) || "").trim()).filter(Boolean) : [];
+    const types = cms.length ? cms : t("contact.types");
     $("#typeChips").innerHTML = types.map((x, i) => `<label class="chip"><input type="radio" name="tipo" value="${esc(x)}" ${state.type === i ? "checked" : ""}><span>${esc(x)}</span></label>`).join("");
-    $("#budgetChips").innerHTML = budgets.map((x, i) => `<label class="chip"><input type="radio" name="presupuesto" value="${esc(x)}" ${state.budget === i ? "checked" : ""}><span>${esc(x)}</span></label>`).join("");
     $$("#typeChips input").forEach((r, i) => r.addEventListener("change", () => (state.type = i)));
-    $$("#budgetChips input").forEach((r, i) => r.addEventListener("change", () => (state.budget = i)));
   }
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   function setErr(input, errEl, msg) {
@@ -340,12 +354,13 @@
     setErr(mail, $("#c-email-err"), EMAIL_RE.test(mail.value.trim()) ? "" : (ok = false, t("contact.errEmail")));
     if (!ok) { (name.value.trim() ? mail : name).focus(); return; }
     const data = Object.fromEntries(new FormData(f));
+    data.presupuesto = String(data.presupuesto || "").trim() || t("contact.noBudget");
     $("#c-send-err").textContent = "";
 
     if (!emailReady || !EJ.templateContacto) {
       // Sin EmailJS: abre WhatsApp con el mensaje armado
-      const msg = `${t("contact.waMsg")}\n\n${t("contact.name")}: ${data.nombre}\n${t("contact.email")}: ${data.correo}\n${t("contact.type")}: ${data.tipo || "-"}\n${t("contact.budget")}: ${data.presupuesto || "-"}\n\n${data.mensaje || ""}`;
-      window.open(`https://wa.me/${C.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+      const msg = `${t("contact.waMsg")}\n\n${t("contact.name")}: ${data.nombre}\n${t("contact.email")}: ${data.correo}\n${t("contact.type")}: ${data.tipo || "-"}\n${t("contact.budget")}: ${data.presupuesto}\n\n${data.mensaje || ""}`;
+      window.open(waLink(msg), "_blank", "noopener");
       return showContactDone();
     }
     const btn = $("#contactBtn"); btn.disabled = true; btn.textContent = t("contact.sending");
@@ -403,7 +418,7 @@
     libroData = { codigo, fecha, ...raw };
     const params = {
       ...libroData, to_email: raw.email, reply_to: raw.email,
-      proveedor: PROVEEDOR, ruc: RUC, ruc_texto: RUC ? `— RUC ${RUC}` : "", domicilio_proveedor: C.direccion, correo_estudio: C.email,
+      proveedor: PROVEEDOR, ruc: RUC, ruc_texto: RUC ? `— RUC ${RUC}` : "", domicilio_proveedor: CT("direccion"), correo_estudio: CT("email"),
       resumen: Object.entries(libroData).map(([k, v]) => `${LABELS[k] || k}: ${v || "-"}`).join("\n")
     };
 
@@ -423,8 +438,8 @@
     } else {
       // Sin EmailJS: abre el correo del usuario con la hoja completa (copia al consumidor)
       const subject = `Hoja de Reclamación ${codigo} — ${PROVEEDOR}`;
-      const body = `HOJA DE RECLAMACIÓN VIRTUAL\nProveedor: ${PROVEEDOR}${RUC ? ` — RUC ${RUC}` : ""}\nDomicilio: ${C.direccion}\n\n${params.resumen}`;
-      window.location.href = `mailto:${C.email}?cc=${encodeURIComponent(raw.email)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const body = `HOJA DE RECLAMACIÓN VIRTUAL\nProveedor: ${PROVEEDOR}${RUC ? ` — RUC ${RUC}` : ""}${CT("direccion") ? `\nDomicilio: ${CT("direccion")}` : ""}\n\n${params.resumen}`;
+      window.location.href = `mailto:${CT("email")}?cc=${encodeURIComponent(raw.email)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       $("#lrDoneMsg").textContent = "Se abrió tu aplicación de correo con la hoja completa. Envía ese correo para completar el registro. Guarda tu código y te responderemos en un plazo no mayor a 15 días hábiles.";
     }
     $("#lrCode").textContent = codigo;
@@ -438,7 +453,7 @@
     const rows = Object.entries(libroData).map(([k, v]) => `<tr><th>${esc(LABELS[k] || k)}</th><td>${esc(v || "-")}</td></tr>`).join("");
     $("#printSheet").innerHTML = `
       <h1>Libro de Reclamaciones — Hoja de Reclamación Virtual</h1>
-      <p>${[PROVEEDOR, RUC && "RUC " + RUC, C.direccion].filter(Boolean).map(esc).join(" — ")}</p>
+      <p>${[PROVEEDOR, RUC && "RUC " + RUC, CT("direccion")].filter(Boolean).map(esc).join(" — ")}</p>
       <table>${rows}</table>
       <p style="margin-top:12px">La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el Indecopi. El proveedor deberá dar respuesta al reclamo en un plazo no mayor a quince (15) días hábiles.</p>`;
   }
@@ -455,9 +470,10 @@
   const loadJSON = (url) => fetch(url, { cache: "no-cache" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .catch((err) => { console.error("No se pudo cargar " + url, err); return null; });
-  Promise.all([loadJSON("content/proyectos.json"), loadJSON("content/estudio.json")]).then(([list, est]) => {
+  Promise.all([loadJSON("content/proyectos.json"), loadJSON("content/estudio.json"), loadJSON("content/contacto.json")]).then(([list, est, ct]) => {
     projects = prepProjects(Array.isArray(list) ? list : []);
     studio = est && typeof est === "object" ? est : {};
+    contact = ct && typeof ct === "object" && !Array.isArray(ct) ? ct : null;
     buildHero(); applyLang(); goSlide(0);
   });
 })();
