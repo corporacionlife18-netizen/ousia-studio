@@ -1,0 +1,5 @@
+# Fotos en alta resolución (las optimizadas van en img/proyectos/)
+fotos-originales/
+
+# Configuración local de Claude Code (servidor de vista previa)
+.claude/

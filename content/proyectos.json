@@ -1,0 +1,168 @@
+[
+  {
+    "title": {
+      "es": "Oasis Selvático",
+      "en": "Oasis Selvático"
+    },
+    "cat": "com",
+    "location": "[Ubicación]",
+    "year": "[Año]",
+    "area": "[— m²]",
+    "status": "proyecto",
+    "visualization": "Ousia Studio",
+    "role": {
+      "es": "Diseño arquitectónico",
+      "en": "Architectural design"
+    },
+    "challenge": {
+      "es": "[Qué pedía el cliente y qué hacía difícil el encargo.]",
+      "en": "[What the client asked for and what made it hard.]"
+    },
+    "answer": {
+      "es": "[Qué decidió el estudio y por qué.]",
+      "en": "[What the studio decided and why.]"
+    },
+    "photos": [
+      "img/proyectos/p01-1.jpg",
+      "img/proyectos/p01-2.jpg",
+      "img/proyectos/p01-3.jpg",
+      "img/proyectos/p01-4.jpg",
+      "img/proyectos/p01-5.jpg",
+      "img/proyectos/p01-6.jpg",
+      "img/proyectos/p01-7.jpg",
+      "img/proyectos/p01-8.jpg",
+      "img/proyectos/p01-9.jpg",
+      "img/proyectos/p01-10.jpg",
+      "img/proyectos/p01-11.jpg",
+      "img/proyectos/p01-12.jpg",
+      "img/proyectos/p01-13.jpg",
+      "img/proyectos/p01-14.jpg",
+      "img/proyectos/p01-15.jpg",
+      "img/proyectos/p01-16.jpg"
+    ],
+    "plans": []
+  },
+  {
+    "title": {
+      "es": "Blue Kitchen",
+      "en": "Blue Kitchen"
+    },
+    "cat": "int",
+    "location": "[Ubicación]",
+    "year": "[Año]",
+    "area": "[— m²]",
+    "status": "proyecto",
+    "visualization": "Ousia Studio",
+    "role": {
+      "es": "Diseño de interiores",
+      "en": "Interior design"
+    },
+    "challenge": {
+      "es": "[Qué pedía el cliente y qué hacía difícil el encargo.]",
+      "en": "[What the client asked for and what made it hard.]"
+    },
+    "answer": {
+      "es": "[Qué decidió el estudio y por qué.]",
+      "en": "[What the studio decided and why.]"
+    },
+    "photos": [
+      "img/proyectos/p02-1.jpg",
+      "img/proyectos/p02-2.jpg",
+      "img/proyectos/p02-3.jpg",
+      "img/proyectos/p02-4.jpg",
+      "img/proyectos/p02-5.jpg",
+      "img/proyectos/p02-6.jpg",
+      "img/proyectos/p02-7.jpg",
+      "img/proyectos/p02-8.jpg",
+      "img/proyectos/p02-9.jpg",
+      "img/proyectos/p02-10.jpg",
+      "img/proyectos/p02-11.jpg"
+    ],
+    "plans": [
+      "img/proyectos/p02-planta.jpg"
+    ]
+  },
+  {
+    "title": {
+      "es": "Caolín – Dormitorio Principal",
+      "en": "Caolín – Main Bedroom"
+    },
+    "cat": "int",
+    "location": "[Ubicación]",
+    "year": "[Año]",
+    "area": "[— m²]",
+    "status": "proyecto",
+    "visualization": "Ousia Studio",
+    "role": {
+      "es": "Diseño de interiores",
+      "en": "Interior design"
+    },
+    "challenge": {
+      "es": "[Qué pedía el cliente y qué hacía difícil el encargo.]",
+      "en": "[What the client asked for and what made it hard.]"
+    },
+    "answer": {
+      "es": "[Qué decidió el estudio y por qué.]",
+      "en": "[What the studio decided and why.]"
+    },
+    "photos": [
+      "img/proyectos/p03-1.jpg",
+      "img/proyectos/p03-2.jpg",
+      "img/proyectos/p03-3.jpg",
+      "img/proyectos/p03-4.jpg",
+      "img/proyectos/p03-5.jpg",
+      "img/proyectos/p03-6.jpg",
+      "img/proyectos/p03-7.jpg",
+      "img/proyectos/p03-8.jpg",
+      "img/proyectos/p03-9.jpg",
+      "img/proyectos/p03-10.jpg",
+      "img/proyectos/p03-11.jpg",
+      "img/proyectos/p03-12.jpg",
+      "img/proyectos/p03-13.jpg",
+      "img/proyectos/p03-14.jpg",
+      "img/proyectos/p03-15.jpg",
+      "img/proyectos/p03-16.jpg",
+      "img/proyectos/p03-17.jpg",
+      "img/proyectos/p03-18.jpg"
+    ],
+    "plans": [
+      "img/proyectos/p03-planta.jpg"
+    ]
+  },
+  {
+    "title": {
+      "es": "Chicken Cheque",
+      "en": "Chicken Cheque"
+    },
+    "cat": "com",
+    "location": "[Ubicación]",
+    "year": "[Año]",
+    "area": "[— m²]",
+    "status": "proyecto",
+    "visualization": "Ousia Studio",
+    "role": {
+      "es": "Diseño de interiores",
+      "en": "Interior design"
+    },
+    "challenge": {
+      "es": "[Qué pedía el cliente y qué hacía difícil el encargo.]",
+      "en": "[What the client asked for and what made it hard.]"
+    },
+    "answer": {
+      "es": "[Qué decidió el estudio y por qué.]",
+      "en": "[What the studio decided and why.]"
+    },
+    "photos": [
+      "img/proyectos/p04-1.jpg",
+      "img/proyectos/p04-2.jpg",
+      "img/proyectos/p04-3.jpg",
+      "img/proyectos/p04-4.jpg",
+      "img/proyectos/p04-5.jpg",
+      "img/proyectos/p04-6.jpg",
+      "img/proyectos/p04-7.jpg"
+    ],
+    "plans": [
+      "img/proyectos/p04-planta.jpg"
+    ]
+  }
+]

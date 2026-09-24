@@ -1,0 +1,110 @@
+# Configuración de Pages CMS (https://pagescms.org/docs)
+# Las imágenes que se suben aquí se optimizan solas con .github/workflows/optimizar-imagenes.yml
+media:
+  - name: proyectos
+    label: Fotos de proyectos
+    input: img/proyectos
+    output: img/proyectos
+    categories: [image]
+    rename: safe
+  - name: estudio
+    label: Fotos del estudio
+    input: img/estudio
+    output: img/estudio
+    categories: [image]
+    rename: safe
+
+content:
+  - name: proyectos
+    label: Proyectos
+    type: file
+    path: content/proyectos.json
+    format: json
+    # lista: se pueden agregar, editar, reordenar (arrastrando) y borrar proyectos.
+    # El orden de la lista es el orden en la web.
+    list: true
+    fields:
+      - name: title
+        label: Nombre del proyecto
+        type: object
+        required: true
+        fields:
+          - { name: es, label: Español, type: string, required: true }
+          - { name: en, label: Inglés, type: string }
+      - name: cat
+        label: Categoría
+        type: select
+        required: true
+        options:
+          values:
+            - { name: res, label: Residencial }
+            - { name: com, label: Comercial }
+            - { name: int, label: Interiores }
+      - name: status
+        label: Estado
+        type: select
+        required: true
+        description: En la web sale en español o inglés según el idioma elegido.
+        options:
+          values:
+            - { name: proyecto, label: Proyecto / Project }
+            - { name: obra, label: En obra / Under construction }
+            - { name: construido, label: Construido / Built }
+      - { name: location, label: Ubicación, type: string }
+      - { name: year, label: Año, type: string }
+      - { name: area, label: Área, type: string, description: "Ej. 120 m²" }
+      - name: visualization
+        label: Visualización
+        type: string
+        description: Autor de los renders o de las fotos.
+      - name: role
+        label: Rol del estudio
+        type: object
+        fields:
+          - { name: es, label: Español, type: string }
+          - { name: en, label: Inglés, type: string }
+      - name: challenge
+        label: El reto
+        type: object
+        fields:
+          - { name: es, label: Español, type: text }
+          - { name: en, label: Inglés, type: text }
+      - name: answer
+        label: La respuesta
+        type: object
+        fields:
+          - { name: es, label: Español, type: text }
+          - { name: en, label: Inglés, type: text }
+      - name: photos
+        label: Fotos o renders
+        description: La primera es la portada (tarjeta y slider de inicio). Puedes subir varias y ordenarlas.
+        type: image
+        options:
+          media: proyectos
+          multiple: true
+      - name: plans
+        label: Planos
+        type: image
+        options:
+          media: proyectos
+          multiple: true
+
+  - name: estudio
+    label: Estudio
+    type: file
+    path: content/estudio.json
+    format: json
+    fields:
+      - name: foto
+        label: Retrato
+        description: Foto vertical (proporción 4:5). Si la dejas vacía se muestra un dibujo de silueta.
+        type: image
+        options:
+          media: estudio
+      - { name: bio_es, label: Biografía (español), type: text }
+      - { name: bio_en, label: Biografía (inglés), type: text }
+      - { name: rol_es, label: Cargo (español), type: string, description: "Ej. Fundadora y arquitecta principal" }
+      - { name: rol_en, label: Cargo (inglés), type: string }
+      - { name: pie_foto_es, label: Pie de foto (español), type: string }
+      - { name: pie_foto_en, label: Pie de foto (inglés), type: string }
+      - { name: formacion, label: Formación, type: string, description: "Universidad (no se traduce)" }

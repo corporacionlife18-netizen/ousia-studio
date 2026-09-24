@@ -1,0 +1,63 @@
+name: Optimizar imágenes
+
+# Se ejecuta cuando un push agrega o cambia imágenes en img/ (por ejemplo, al subir fotos desde Pages CMS).
+on:
+  push:
+    paths:
+      - "img/**.jpg"
+      - "img/**.jpeg"
+      - "img/**.png"
+      - "img/**.webp"
+      - "img/**.JPG"
+      - "img/**.JPEG"
+      - "img/**.PNG"
+      - "img/**.WEBP"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: optimizar-imagenes-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  optimizar:
+    # Sin bucle: (1) los commits hechos con GITHUB_TOKEN no disparan workflows,
+    # (2) se ignoran pushes del bot, (3) el script no toca imágenes que ya cumplen los límites.
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install Pillow
+
+      - name: Optimizar imágenes nuevas o cambiadas
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          if [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            git diff -z --name-only --diff-filter=AM "$BEFORE" "$AFTER" -- img/
+          else
+            # primer push de la rama (o historial reescrito): revisa todas
+            git ls-files -z img/
+          fi | xargs -0 --no-run-if-empty python .github/scripts/optimizar_imagenes.py
+
+      - name: Commit del resultado
+        run: |
+          if [ -z "$(git status --porcelain -- img content)" ]; then
+            echo "Nada que optimizar."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- img content
+          git commit -m "Optimizar imágenes"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

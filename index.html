@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ousia Studio — Arquitectura e interiores</title>
+  <meta name="description" content="Ousia Studio, estudio de arquitectura e interiores de la Arq. Milagros Mogollón. Vivienda, interiores, remodelaciones y espacios comerciales en Perú.">
+  <meta name="theme-color" content="#EEEAE3">
+  <meta property="og:title" content="Ousia Studio — Arquitectura e interiores">
+  <meta property="og:description" content="Arquitectura que parte de la esencia.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/og.jpg">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- NAV -->
+<header class="nav" id="top">
+  <div class="wrap nav__in">
+    <a href="#inicio" class="logo" aria-label="Ousia Studio, inicio">
+      <span class="logo__a">Ousia</span><span class="logo__b">Studio</span>
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+      <a href="#estudio" data-i18n="nav.studio">Estudio</a>
+      <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button><span aria-hidden="true">/</span><button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#contacto" class="btn btn--dark nav__cta" data-i18n="nav.cta">Agenda una reunión</a>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" data-i18n-aria="nav.menu" aria-label="Abrir menú">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h18M3 16h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MENÚ MOBILE -->
+<div class="menu" id="menu" hidden>
+  <div class="menu__top">
+    <span class="logo__a">Ousia</span>
+    <button type="button" class="icon-btn icon-btn--light" id="menuClose" data-i18n-aria="nav.close" aria-label="Cerrar menú">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav class="menu__links" aria-label="Menú">
+    <a href="#proyectos"><span data-i18n="nav.projects">Proyectos</span><small>01</small></a>
+    <a href="#estudio"><span data-i18n="nav.studio">Estudio</span><small>02</small></a>
+    <a href="#servicios"><span data-i18n="nav.services">Servicios</span><small>03</small></a>
+    <a href="#faq"><span data-i18n="nav.faq">FAQ</span><small>04</small></a>
+    <a href="#contacto"><span data-i18n="nav.contact">Contacto</span><small>05</small></a>
+  </nav>
+  <div class="menu__bottom">
+    <div class="menu__lang">
+      <button type="button" data-lang="es" aria-pressed="true">Español</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+    <a href="#contacto" class="btn btn--light btn--block" data-i18n="nav.cta">Agenda una reunión</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="inicio" aria-roledescription="carrusel">
+  <div class="hero__media" id="heroMedia"></div>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="hero__content">
+    <div class="wrap hero__in">
+      <div class="hero__row">
+        <div class="hero__text">
+          <p class="kicker kicker--light hero__anim" data-i18n="hero.kicker">Estudio de arquitectura e interiores</p>
+          <h1 class="hero__title hero__anim hero__anim--2"><span data-i18n="hero.title">Arquitectura que parte de la</span> <em data-i18n="hero.titleEm">esencia.</em></h1>
+        </div>
+        <button type="button" class="hero__slide" id="heroSlideBtn">
+          <span class="hero__cat" id="heroCat"></span>
+          <span class="hero__name" id="heroName"></span>
+          <span class="hero__see" data-i18n="hero.see">Ver proyecto</span>
+        </button>
+      </div>
+      <div class="hero__controls">
+        <span class="hero__count"><span id="heroNum">01</span> / <span id="heroTotal">04</span></span>
+        <button type="button" class="icon-btn icon-btn--ghost-light hero__pause" id="heroPause" aria-label="Pausar presentación">
+          <svg class="ico-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3" height="14" rx=".5"/><rect x="14" y="5" width="3" height="14" rx=".5"/></svg>
+          <svg class="ico-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a.5.5 0 0 0 .77.42l10-6.5a.5.5 0 0 0 0-.84l-10-6.5A.5.5 0 0 0 8 5.5z"/></svg>
+        </button>
+        <div class="hero__bars" id="heroBars"></div>
+        <div class="hero__arrows">
+          <button type="button" class="icon-btn icon-btn--ghost-light hide-sm" id="heroPrev" data-i18n-aria="hero.prev" aria-label="Anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" class="icon-btn icon-btn--ghost-light" id="heroNext" data-i18n-aria="hero.next" aria-label="Siguiente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFIESTO -->
+<section class="wrap manifest">
+  <div class="manifest__grid">
+    <div class="manifest__def">
+      <span class="manifest__word" lang="el">οὐσία</span>
+      <span class="muted" data-i18n="manifest.def">Del griego: esencia, lo que una cosa es.</span>
+    </div>
+    <p class="manifest__text"><span data-i18n="manifest.text"></span> <span class="accent" data-i18n="manifest.textEm"></span></p>
+  </div>
+  <div class="principles">
+    <div class="principle"><h3 class="principle__n"><span data-i18n="manifest.p1n">Luz</span></h3><p data-i18n="manifest.p1"></p></div>
+    <div class="principle"><h3 class="principle__n"><span data-i18n="manifest.p2n">Materia</span></h3><p data-i18n="manifest.p2"></p></div>
+    <div class="principle"><h3 class="principle__n"><span data-i18n="manifest.p3n">Escala</span></h3><p data-i18n="manifest.p3"></p></div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="wrap section" id="proyectos">
+  <div class="sec-head">
+    <div class="sec-head__title">
+      <span class="sec-num">(01)</span>
+      <h2 class="h2" data-i18n="projects.title">Proyectos</h2>
+      <span class="muted small" id="projCount"></span>
+    </div>
+    <div class="sec-head__tools">
+      <div class="chips chips--scroll" id="filters" role="group" aria-label="Filtros"></div>
+      <div class="viewtoggle hide-sm" role="group">
+        <button type="button" class="icon-btn" data-view="grid" aria-pressed="true" data-i18n-aria="projects.grid" aria-label="Vista cuadrícula"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg></button>
+        <button type="button" class="icon-btn" data-view="list" aria-pressed="false" data-i18n-aria="projects.list" aria-label="Vista índice"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="pgrid" id="pgrid"></div>
+  <div class="plist" id="plist" hidden>
+    <div class="plist__rows">
+      <div class="plist__head" aria-hidden="true"><span>N°</span><span data-i18n="projects.colName">Proyecto</span><span data-i18n="projects.colCat">Categoría</span><span data-i18n="projects.colYear">Año</span></div>
+      <div id="plistRows"></div>
+    </div>
+    <div class="plist__preview" id="plistPreview" aria-hidden="true"></div>
+  </div>
+  <p class="muted" id="projEmpty" hidden data-i18n="projects.empty"></p>
+</section>
+
+<!-- ESTUDIO -->
+<section class="studio" id="estudio">
+  <div class="wrap studio__in">
+    <figure class="studio__fig">
+      <div class="ph ph--dark studio__img" id="portrait">
+        <!-- La foto se carga desde content/estudio.json (campo "foto"); esto es el placeholder -->
+        <svg viewBox="0 0 200 240" width="42%" fill="none" stroke="currentColor" stroke-opacity=".3" stroke-width="1.2" aria-hidden="true"><circle cx="100" cy="80" r="42"/><path d="M30 230c0-60 30-90 70-90s70 30 70 90"/></svg>
+        <span class="ph__label">[<span data-i18n="studio.portrait">Retrato</span>]</span>
+      </div>
+      <figcaption class="small" id="portraitCaption" data-i18n="studio.caption">Milagros en el estudio</figcaption>
+    </figure>
+    <div class="studio__text">
+      <div class="sec-label"><span class="sec-num">(02)</span><span class="kicker kicker--sand" data-i18n="studio.kicker">El estudio</span></div>
+      <h2 class="h2 h2--md" data-i18n="studio.title"></h2>
+      <p class="lead" data-i18n="studio.p1"></p>
+      <p class="lead" id="studioBio" data-i18n="studio.bio"></p>
+      <div class="studio__sign">
+        <span class="studio__name">Arq. Milagros Mogollón</span>
+        <span class="small" id="studioRole" data-i18n="studio.role">Fundadora y arquitecta principal</span>
+      </div>
+      <dl class="studio__facts">
+        <div><dt data-i18n="studio.edu">Formación</dt><dd id="studioEdu" data-i18n="studio.eduVal"></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="wrap section" id="servicios">
+  <div class="sec-head"><div class="sec-head__title"><span class="sec-num">(03)</span><h2 class="h2" data-i18n="services.title">Servicios</h2></div></div>
+  <div class="services">
+    <div class="service"><span class="service__n">01</span><div><h3 class="service__name" data-i18n="services.s1n"></h3><p data-i18n="services.s1"></p></div></div>
+    <div class="service"><span class="service__n">02</span><div><h3 class="service__name" data-i18n="services.s2n"></h3><p data-i18n="services.s2"></p></div></div>
+    <div class="service"><span class="service__n">03</span><div><h3 class="service__name" data-i18n="services.s3n"></h3><p data-i18n="services.s3"></p></div></div>
+    <div class="service"><span class="service__n">04</span><div><h3 class="service__name" data-i18n="services.s4n"></h3><p data-i18n="services.s4"></p></div></div>
+  </div>
+  <p class="kicker process__k" data-i18n="services.process">Cómo trabajamos</p>
+  <ol class="process">
+    <li class="step"><span class="step__n">01</span><h3 class="step__name" data-i18n="services.st1n"></h3><p data-i18n="services.st1"></p></li>
+    <li class="step"><span class="step__n">02</span><h3 class="step__name" data-i18n="services.st2n"></h3><p data-i18n="services.st2"></p></li>
+    <li class="step"><span class="step__n">03</span><h3 class="step__name" data-i18n="services.st3n"></h3><p data-i18n="services.st3"></p></li>
+    <li class="step"><span class="step__n">04</span><h3 class="step__name" data-i18n="services.st4n"></h3><p data-i18n="services.st4"></p></li>
+  </ol>
+</section>
+
+<!-- FAQ -->
+<section class="wrap section section--flush" id="faq">
+  <div class="faq">
+    <div class="sec-head__title faq__title"><span class="sec-num">(04)</span><h2 class="h2" data-i18n="faq.title">Preguntas frecuentes</h2></div>
+    <div class="faq__list" id="faqList">
+      <details class="qa" open><summary><span data-i18n="faq.q1"></span><span class="qa__sign" aria-hidden="true"></span></summary><p data-i18n="faq.a1"></p></details>
+      <details class="qa"><summary><span data-i18n="faq.q2"></span><span class="qa__sign" aria-hidden="true"></span></summary><p data-i18n="faq.a2"></p></details>
+      <details class="qa"><summary><span data-i18n="faq.q3"></span><span class="qa__sign" aria-hidden="true"></span></summary><p data-i18n="faq.a3"></p></details>
+      <details class="qa"><summary><span data-i18n="faq.q4"></span><span class="qa__sign" aria-hidden="true"></span></summary><p data-i18n="faq.a4"></p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="wrap contact__in">
+    <div class="contact__info">
+      <div class="sec-label"><span class="sec-num">(05)</span><span class="kicker" data-i18n="contact.kicker">Contacto</span></div>
+      <h2 class="h2 h2--lg" data-i18n="contact.title"></h2>
+      <p class="lead lead--ink" data-i18n="contact.sub"></p>
+      <a class="btn btn--dark btn--wa" data-wa target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.4 18.7z"/></svg>
+        <span data-i18n="contact.whatsapp">Escríbenos por WhatsApp</span>
+      </a>
+      <dl class="contact__data">
+        <div><dt>Email</dt><dd><a data-email></a></dd></div>
+        <div><dt>Instagram</dt><dd><a data-ig target="_blank" rel="noopener"></a></dd></div>
+        <div class="span2"><dt data-i18n="contact.where">Estudio</dt><dd data-address></dd></div>
+      </dl>
+    </div>
+
+    <div class="card">
+      <form id="contactForm" novalidate>
+        <div class="grid2">
+          <div class="field"><label for="c-name" data-i18n="contact.name">Nombre</label><input id="c-name" name="nombre" type="text" autocomplete="name" required><span class="err" id="c-name-err"></span></div>
+          <div class="field"><label for="c-email" data-i18n="contact.email">Correo</label><input id="c-email" name="correo" type="email" autocomplete="email" required><span class="err" id="c-email-err"></span></div>
+        </div>
+        <fieldset class="field"><legend data-i18n="contact.type">Tipo de proyecto</legend><div class="chips" id="typeChips"></div></fieldset>
+        <fieldset class="field"><legend data-i18n="contact.budget">Presupuesto aproximado</legend><div class="chips" id="budgetChips"></div></fieldset>
+        <div class="field"><label for="c-msg" data-i18n="contact.msg">Cuéntanos un poco</label><textarea id="c-msg" name="mensaje" rows="3"></textarea></div>
+        <p class="err" id="c-send-err" role="alert"></p>
+        <button type="submit" class="btn btn--dark" id="contactBtn" data-i18n="contact.send">Enviar mensaje</button>
+      </form>
+      <div class="done" id="contactDone" hidden tabindex="-1">
+        <p class="done__title" data-i18n="contact.thanks"></p>
+        <p class="muted" data-i18n="contact.thanksSub"></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="wrap footer">
+  <nav class="footer__links" aria-label="Pie de página">
+    <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+    <a href="#estudio" data-i18n="nav.studio">Estudio</a>
+    <a href="#servicios" data-i18n="nav.services">Servicios</a>
+    <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+    <a data-ig target="_blank" rel="noopener">Instagram</a>
+    <a href="#top" data-i18n="nav.top">Volver arriba</a>
+  </nav>
+  <p class="footer__name" aria-hidden="true">Ousia Studio</p>
+  <div class="footer__bottom">
+    <span>© <span id="year"></span> Ousia Studio<span data-if="razonSocial"> — <span data-razon></span></span><span data-if="ruc"> — RUC <span data-ruc></span></span> — <span data-i18n="footer.rights"></span></span>
+    <button type="button" class="libro-btn" id="libroOpen" lang="es">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 6c4-1 8-.5 11 2 3-2.5 7-3 11-2v19c-4-1-8-.5-11 2-3-2.5-7-3-11-2zM16 8v19"/><path d="M8.5 11l4.5.8M8.5 15l4.5.8M19 11.8l4.5-.8M19 15.8l4.5-.8"/></svg>
+      <span><strong>Libro de Reclamaciones</strong><small>Hoja de reclamación virtual</small></span>
+    </button>
+    <span><span data-i18n="footer.credit">Web por</span> WhiteCode Studio</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="wa-fab is-away" data-wa target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.4 18.7z"/><path d="M9.2 9.2c0 2.8 2.4 5.4 5.4 5.6"/></svg>
+</a>
+
+<!-- MODAL PROYECTO -->
+<div class="overlay" id="pmodal" hidden>
+  <div class="pm" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <div class="pm__media">
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" data-tab="photos" aria-selected="true" data-i18n="modal.photos">Fotos</button>
+        <button type="button" role="tab" data-tab="plans" aria-selected="false" data-i18n="modal.plans">Planos</button>
+      </div>
+      <div class="pm__stage" id="pmStage"></div>
+      <div class="pm__thumbs" id="pmThumbs"></div>
+    </div>
+    <div class="pm__info">
+      <div class="pm__bar">
+        <div class="pm__nav">
+          <button type="button" class="icon-btn icon-btn--line" id="pmPrev" data-i18n-aria="modal.prev" aria-label="Anterior"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" class="icon-btn icon-btn--line" id="pmNext" data-i18n-aria="modal.next" aria-label="Siguiente"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          <span class="small muted" id="pmCount"></span>
+        </div>
+        <button type="button" class="icon-btn icon-btn--dark" id="pmClose" data-i18n-aria="modal.close" aria-label="Cerrar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="pm__head"><span class="kicker" id="pmCat"></span><h2 class="pm__title" id="pmTitle"></h2></div>
+      <div class="pm__block"><h3 class="label" data-i18n="modal.challenge">El reto</h3><p id="pmChallenge"></p></div>
+      <div class="pm__block"><h3 class="label" data-i18n="modal.answer">La respuesta</h3><p id="pmAnswer"></p></div>
+      <dl class="pm__meta" id="pmMeta"></dl>
+      <a href="#contacto" class="btn btn--dark pm__cta" id="pmCta" data-i18n="modal.cta">Quiero algo así</a>
+    </div>
+  </div>
+</div>
+
+<!-- LIBRO DE RECLAMACIONES -->
+<div class="overlay" id="libro" hidden lang="es">
+  <div class="lr" role="dialog" aria-modal="true" aria-labelledby="lrTitle">
+    <div class="lr__head">
+      <div>
+        <p class="kicker">Libro de Reclamaciones Virtual</p>
+        <h2 class="lr__title" id="lrTitle">Hoja de Reclamación</h2>
+        <p class="small muted lr__aviso">Conforme a lo establecido en el Código de Protección y Defensa del Consumidor (Ley N° 29571), Ousia Studio cuenta con un Libro de Reclamaciones a tu disposición.</p>
+      </div>
+      <button type="button" class="icon-btn icon-btn--dark" id="libroClose" aria-label="Cerrar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+
+    <form id="libroForm" novalidate>
+      <div class="lr__prov">
+        <div><span>Proveedor</span><strong data-proveedor></strong></div>
+        <div data-if="ruc"><span>RUC</span><strong data-ruc></strong></div>
+        <div><span>Domicilio</span><strong data-address></strong></div>
+      </div>
+
+      <fieldset class="lr__sec">
+        <legend>1. Identificación del consumidor</legend>
+        <div class="grid2">
+          <div class="field field--box"><label for="lr-nombre">Nombres y apellidos *</label><input id="lr-nombre" name="nombre" autocomplete="name" required></div>
+          <div class="grid-doc">
+            <div class="field field--box"><label for="lr-tdoc">Documento *</label><select id="lr-tdoc" name="tipo_doc"><option>DNI</option><option>C.E.</option><option>Pasaporte</option><option>RUC</option></select></div>
+            <div class="field field--box"><label for="lr-ndoc">N° de documento *</label><input id="lr-ndoc" name="num_doc" inputmode="numeric" required></div>
+          </div>
+          <div class="field field--box span2"><label for="lr-dom">Domicilio *</label><input id="lr-dom" name="domicilio" autocomplete="street-address" required></div>
+          <div class="field field--box"><label for="lr-tel">Teléfono</label><input id="lr-tel" name="telefono" type="tel" autocomplete="tel"></div>
+          <div class="field field--box"><label for="lr-email">Correo electrónico *</label><input id="lr-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <label class="check"><input type="checkbox" id="lr-menor" name="menor"><span>Soy menor de edad</span></label>
+        <div class="field field--box" id="lr-apod-wrap" hidden><label for="lr-apod">Nombre del padre, madre o apoderado *</label><input id="lr-apod" name="apoderado"></div>
+      </fieldset>
+
+      <fieldset class="lr__sec">
+        <legend>2. Identificación del bien contratado</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="bien" value="Producto"><span>Producto</span></label>
+          <label class="chip"><input type="radio" name="bien" value="Servicio" checked><span>Servicio</span></label>
+        </div>
+        <div class="grid-monto">
+          <div class="field field--box"><label for="lr-monto">Monto reclamado (S/)</label><input id="lr-monto" name="monto" inputmode="decimal"></div>
+          <div class="field field--box"><label for="lr-desc">Descripción *</label><input id="lr-desc" name="descripcion" required></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="lr__sec">
+        <legend>3. Detalle de la reclamación</legend>
+        <div class="tipo">
+          <label class="tipo__opt"><input type="radio" name="tipo" value="Reclamo" checked><span><strong>Reclamo</strong>Disconformidad relacionada con el producto o servicio contratado.</span></label>
+          <label class="tipo__opt"><input type="radio" name="tipo" value="Queja"><span><strong>Queja</strong>Malestar o descontento respecto a la atención al público, no relacionado con el producto o servicio.</span></label>
+        </div>
+        <div class="field field--box"><label for="lr-det">Detalle *</label><textarea id="lr-det" name="detalle" rows="4" required></textarea></div>
+        <div class="field field--box"><label for="lr-ped">Pedido del consumidor *</label><textarea id="lr-ped" name="pedido" rows="3" required></textarea></div>
+      </fieldset>
+
+      <div class="lr__foot">
+        <label class="check"><input type="checkbox" id="lr-conforme" name="conforme"><span>Declaro que la información es verdadera y estoy conforme con los términos de mi reclamo o queja.</span></label>
+        <p class="small muted">La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el Indecopi. El proveedor deberá dar respuesta al reclamo en un plazo no mayor a quince (15) días hábiles. Al enviar, recibirás una copia en tu correo con la fecha, hora y código de registro. Tus datos se usan solo para atender este reclamo (Ley N° 29733).</p>
+        <p class="err" id="lr-err" role="alert"></p>
+        <button type="submit" class="btn btn--dark" id="lrSubmit" disabled>Enviar hoja de reclamación</button>
+      </div>
+    </form>
+
+    <div class="done" id="libroDone" hidden tabindex="-1">
+      <p class="done__title">Tu reclamo fue registrado.</p>
+      <div class="lr__code">
+        <div><span>Código de registro</span><strong id="lrCode"></strong></div>
+        <div><span>Fecha y hora</span><strong id="lrDate"></strong></div>
+      </div>
+      <p id="lrDoneMsg">Enviamos una copia a tu correo. Guarda tu código para hacer seguimiento. Te responderemos en un plazo no mayor a 15 días hábiles.</p>
+      <div class="lr__actions">
+        <button type="button" class="btn btn--dark" id="lrPrint">Imprimir hoja</button>
+        <button type="button" class="btn btn--line" id="lrDoneClose">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hoja imprimible (solo se ve al imprimir) -->
+<div id="printSheet" class="print-sheet" aria-hidden="true"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
