@@ -78,7 +78,7 @@ No hace falta achicar las fotos antes: el sistema las optimiza solo. Evita subir
 2. Cambia **Biografía (español)** y **Biografía (inglés)**. Ahí mismo puedes cambiar tu cargo, el pie de foto y tu formación.
 3. Pulsa **Save**.
 
-**Imagen para compartir en WhatsApp/redes:** agrega `img/og.jpg` (1200 × 630 px).
+**Imagen para compartir en WhatsApp/redes:** `img/og.jpg` (1200 × 630 px). Las etiquetas `og:url`, `og:image` y `twitter:image` de `index.html` usan la URL absoluta de Render; cámbialas cuando conectes el dominio definitivo (hay un comentario ahí).
 
 ## 3. Subir a Render
 
